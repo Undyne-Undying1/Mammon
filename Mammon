@@ -1,0 +1,129 @@
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+
+const token = 'NzE5NzQ2MDczNDIxMTUyMzI2.XxIlWw.-dK9fVXtaIIo0xw8p2igg4CsZUw';
+
+const PREFIX = '!';
+
+var version = '1.0.1';
+
+bot.on('ready', () =>{
+    console.log('This bot is online!');
+})
+
+bot.on('message', message=>{
+
+    let args = message.content.substring(PREFIX.length).split(" ");
+
+    switch(args[0]){
+        case 'ping':
+            message.channel.send('pong!')
+            break;
+        case 'website':
+            message.channel.send('youtube.com')
+            break;
+        case 'info':
+            if(args[1] === 'version'){
+                message.channel.send('Version ' + version);
+            }else{
+                message.channel.send('Invalid Args')
+            }
+            break;
+        case 'clear':
+            if(!args[1]) return message.reply('error please define second arg')
+            message.channel.bulkDelete(args[1]);
+            break;
+        case 'embed':
+            const embed = new Discord.MessageEmbed()
+            .setTitle('User Information')
+            .addField('Player Name', message.author.username)
+            .addField('Version', version)
+            .addField('Current Server', message.guild.name)
+            .setColor(0xF1C70B)
+            .setThumbnail(message.author.displayAvatarURL());
+            message.channel.send(embed);
+            break;
+        case'touch':
+            message.channel.send('Hey! No touching! Grrr...')
+            break;
+        case 'goldie':
+            message.channel.send('My dear GOLDIEEEEE! Dont worry, Im comin for ya!')
+            break;
+        case 'pet':
+            message.channel.send('Ya better not do this for any of the others!')
+            break;
+        case 'poke':
+            message.channel.send('Ya think youre being funny? Huh?!')
+            break;
+        case 'ignore':
+            message.channel.send('Hey, dont you dare ignore me!')
+            break;
+        case 'hit':
+            message.channel.send('Who do ya think youre dealin with, huh? You foolish human.')
+            break;
+        case 'thanks':
+            message.channel.send('You can leave it up to THE Mammon next time as well. See ya!')
+            break;
+        case 'bye':
+            message.channel.send('Im gonna get going now. See ya.')
+            break;
+        case 'gift':
+            message.channel.send('Oh, thats right. I got somethin for ya. Be grateful and take it!')
+            break;
+        case 'feed':
+            message.channel.send('Nice timing, I was just gettin hungry. Thanks!')
+            break;
+        case 'give':
+            message.channel.send('Oh, thats for me? Thaaanks!')
+            break;
+        case 'valentines':
+            message.channel.send('Merry Valentines Day! You aint celebratin without a gift from Mammon! I mean... here, take this.')
+            break;
+        case 'wait':
+            message.channel.send('Youve got some nerve makin THE Mammon wait around for ya!')
+            break;
+        case 'lucifer':
+            message.channel.send('Look, I TOLD ya. I aint afraid of Lucifer, really!')
+            break;
+        case 'levi':
+            message.channel.send('Oh man, this is bad! I broke Levis figurine...')
+            break;
+        case 'beel':
+            message.channel.send('DAAAH! BEEL GNAWED ON MY WALLET!')
+            break;
+        case 'rain':
+            message.channel.send('*sigh* "Wish itd start raining money...')
+            break;
+        case 'bored':
+            message.channel.send('Hey, Im bored over here. Cmon human, time to entertain the Great Mammon!')
+            break;
+        case 'mammon':
+            message.channel.send('Im one of seven rulers of the Devildom! Mammon, the Avatar of Greed!')
+            break;
+        case 'only':
+            message.channel.send('Sure, there are seven of us, but Im the only one that really matters!')
+            break;
+        case 'lost':
+            message.channel.send('Aaand now its gone. Dont blame me if you miss it.')
+            break;
+        case 'bday':
+            message.channel.send('HAPPY BIRTHDAAAAAAAAAY! I bet youre happy to celebrate your birthday with THE Mammon!')
+            break;
+        case 'kiss':
+            message.channel.send('Im gonna need more of that.')
+            break;
+        case 'hug':
+            message.channel.send('S-S-Stop it!')
+            break;
+        case 'hi':
+            message.channel.send('Sup')
+            break;
+        case 'growl':
+            message.channel.send('Grrr...')
+            break;
+
+}
+
+})
+
+bot.login(token);
